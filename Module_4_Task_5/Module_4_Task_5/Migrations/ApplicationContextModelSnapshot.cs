@@ -91,9 +91,9 @@ namespace Module_4_Task_5.Migrations
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReleaseDate")
+                    b.Property<DateTime>("ReleasedDate")
                         .HasColumnType("date")
-                        .HasColumnName("ReleaseDate");
+                        .HasColumnName("ReleasedDate");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -125,13 +125,13 @@ namespace Module_4_Task_5.Migrations
 
             modelBuilder.Entity("Module_4_Task_5.Song", b =>
                 {
-                    b.HasOne("Module_4_Task_5.Genre", "Gener")
+                    b.HasOne("Module_4_Task_5.Genre", "Genre")
                         .WithMany("Songs")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Gener");
+                    b.Navigation("Genre");
                 });
 
             modelBuilder.Entity("SongArtist", b =>

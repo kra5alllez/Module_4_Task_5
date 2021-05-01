@@ -18,7 +18,7 @@ namespace Module_4_Task_5
         public async Task TaskOne()
         {
             var data = await _context.Songs.
-                Select(c => new { SongTitle = c.Title, Genre = c.Gener.Title, NameArtist = c.Artists
+                Select(c => new { SongTitle = c.Title, Genre = c.Genre.Title, NameArtist = c.Artists
                 .Select(e => e.Name)})
                 .Where(g => g.NameArtist
                 .First() != null && g.Genre != null)
@@ -32,7 +32,7 @@ namespace Module_4_Task_5
 
         public async Task TaskTwo()
         {
-            var data = await _context.Songs.GroupBy(g => g.Gener.Title).
+            var data = await _context.Songs.GroupBy(g => g.Genre.Title).
                 Select(n => new { n.Key, Count = n.Count() }).ToListAsync();
 
             foreach (var dif in data)
@@ -44,10 +44,7 @@ namespace Module_4_Task_5
         public async Task TaskThree()
         {
             var oldSongs = await _context.Songs
-                .Where(s => s.ReleaseDate < s.Artists
-                .Select(e=>e.DateOfBirth)
-                .OrderByDescending(e=>e)
-                .First()).ToListAsync();
+                .Where(s => s.ReleasedDate < s.Artists.Select(e=>e.DateOfBirth).Max()).ToListAsync();
             foreach (var dif in oldSongs)
             {
                 Console.WriteLine($"Name Song: {dif.Title}");

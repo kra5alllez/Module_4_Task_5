@@ -45,7 +45,7 @@ namespace Module_4_Task_5.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Duration = table.Column<TimeSpan>(type: "time", nullable: false),
-                    ReleaseDate = table.Column<DateTime>(type: "date", nullable: false),
+                    ReleasedDate = table.Column<DateTime>(type: "date", nullable: false),
                     GenreId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -105,7 +105,7 @@ namespace Module_4_Task_5.Migrations
                 "('NK', '1985-04-10', '+380999854195', 'nk@gmail.com', 'instaNK')," +
                 "('Pugacheva', '1940-01-01', '', '', '')," +
                 "('Moby', '1965-09-11', '+38099985842', 'moby@gmail.com', 'instaMoby')");
-            migrationBuilder.Sql("INSERT INTO Song (Title, Duration, ReleaseDate, GenreId) " +
+            migrationBuilder.Sql("INSERT INTO Song (Title, Duration, ReleasedDate, GenreId) " +
                 "VALUES ('TitekS1', '05:32', '2015-09-08', (SELECT GenreId From Genre WHERE Title = 'Pop'))," +
                 "('TitekS2', '03:20', '2020-11-11', (SELECT GenreId From Genre WHERE Title = 'Rock'))," +
                 "('TitekS3', '02:48', '2021-02-01', (SELECT GenreId From Genre WHERE Title = 'Hip-Hope'))," +

@@ -12,9 +12,9 @@ namespace Module_4_Task_5
             builder.Property(p => p.Id).IsRequired().HasColumnName("SongId");
             builder.Property(p => p.Title).IsRequired().HasColumnName("Title").HasMaxLength(100);
             builder.Property(p => p.Duration).IsRequired().HasColumnName("Duration").HasColumnType("time");
-            builder.Property(p => p.ReleaseDate).IsRequired().HasColumnName("ReleaseDate").HasColumnType("date");
+            builder.Property(p => p.ReleasedDate).IsRequired().HasColumnName("ReleasedDate").HasColumnType("date");
 
-            builder.HasOne(d => d.Gener)
+            builder.HasOne(d => d.Genre)
                 .WithMany(p => p.Songs)
                 .HasForeignKey(d => d.GenreId)
                 .OnDelete(DeleteBehavior.Restrict);

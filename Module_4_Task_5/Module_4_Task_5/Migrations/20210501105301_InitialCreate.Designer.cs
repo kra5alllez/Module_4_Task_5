@@ -10,7 +10,7 @@ using Module_4_Task_5;
 namespace Module_4_Task_5.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20210428113455_InitialCreate")]
+    [Migration("20210501105301_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,9 +93,9 @@ namespace Module_4_Task_5.Migrations
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReleaseDate")
+                    b.Property<DateTime>("ReleasedDate")
                         .HasColumnType("date")
-                        .HasColumnName("ReleaseDate");
+                        .HasColumnName("ReleasedDate");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -127,13 +127,13 @@ namespace Module_4_Task_5.Migrations
 
             modelBuilder.Entity("Module_4_Task_5.Song", b =>
                 {
-                    b.HasOne("Module_4_Task_5.Genre", "Gener")
+                    b.HasOne("Module_4_Task_5.Genre", "Genre")
                         .WithMany("Songs")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Gener");
+                    b.Navigation("Genre");
                 });
 
             modelBuilder.Entity("SongArtist", b =>
